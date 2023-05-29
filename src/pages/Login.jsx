@@ -3,6 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../redux/action/auth";
+import GoogleLogin from "../components/GoogleLogin";
 
 function Login() {
   const dispatch = useDispatch();
@@ -50,6 +51,14 @@ function Login() {
               Submit
             </Button>
           </Form>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <h3 className="text-center">or</h3>
+          <div className="d-flex justify-content-center align-items-center">
+            <GoogleLogin buttonText={"Login With Google"} />
+          </div>
         </Col>
       </Row>
     </Container>

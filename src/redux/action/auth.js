@@ -88,3 +88,28 @@ export const getProfile = () => async (dispatch, getState) => {
     toast.error(error.message);
   }
 };
+
+export const googleLogin = (data, navigate) => async (dispatch) => {
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_AUTH_API}/api/v1/auth/google`,
+      data,
+      {
+        "Content-Type": "application/json",
+      }
+    );
+    const { token } = response?.data?.data;
+
+    dispatch(setIsLoggedIn(true));
+    dispatch(setToken(token));
+
+    // jangan lupa ke home page, menggunakan useNavigate di component login
+    navigate("/");
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      toast.error(error?.response?.data?.message);
+    }
+
+    toast.error(error.message);
+  }
+};
