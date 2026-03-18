@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register } from "../redux/action/auth";
 import { toast } from "react-toastify";
+import GoogleLogin from "../components/GoogleLogin";
 
 function Register() {
   const dispatch = useDispatch();
@@ -34,16 +35,13 @@ function Register() {
           {" "}
           <Form onSubmit={onSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Full Name</Form.Label>
+              <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -83,6 +81,15 @@ function Register() {
               Submit
             </Button>
           </Form>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+          <h3 className="text-center">Or</h3>
+          <div className="d-flex justify-content-center align-items-center">
+            <GoogleLogin buttonText={"Register with Google"} />
+          </div>
         </Col>
       </Row>
     </Container>
